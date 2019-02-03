@@ -1,5 +1,5 @@
 from django.contrib import admin
-from shop.models import Category, Tag, Image_gallery, Shop_user, City, Province
+from shop.models import Category, Tag, Image_gallery, Shop_user, City, Province, Product
 
 # Register your models here.
 admin.site.register(Category)
@@ -8,3 +8,4 @@ admin.site.register(Image_gallery)
 admin.site.register(Shop_user)
 admin.site.register(City)
 admin.site.register(Province)
+admin.site.register(Product)

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from shop.Enums import Order_state
+
 
 class Category(models.Model):
     title = models.CharField(max_length=100, unique=True)
@@ -60,7 +62,7 @@ class Shop_user(models.Model):
     profile_pic = models.ImageField(upload_to='media/upload/profile/images', default='media/upload/images/no-img.jpg')
     about = models.TextField(max_length=300, null=True, blank=True)
     postal_code = models.CharField(max_length=10, null=True, blank=True)
-    city = models.OneToOneField(City, on_delete=models.SET_NULL, null=True, blank=True)
+    city = models.OneToOneField(City, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name = 'Shop User'
@@ -68,3 +70,19 @@ class Shop_user(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Product(models.Model):
+    title = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=100, unique=True)
+    content = models.TextField(max_length=1000)
+    publish_date = models.DateTimeField(auto_now_add=True)
+    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    tags = models.ManyToManyField(Tag, blank=True)
+    is_active_comment = models.BooleanField
+    status = models.CharField(
+        max_length=50,
+        choices=[(tag, tag.value) for tag in Order_state]
+    )
+
+
