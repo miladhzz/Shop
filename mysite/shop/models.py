@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from shop.Enums import Order_state
+from shop.Enums import Order_state, Product_transportation_class, Product_types, Product_In_Stock
 
 
 class Category(models.Model):
@@ -36,6 +36,19 @@ class Image_gallery(models.Model):
     class Meta:
         verbose_name = 'Image Gallery'
         verbose_name_plural = 'Image Gallery'
+
+
+class File_gallery(models.Model):
+    title = models.CharField(max_length=100, unique=True)
+    file = models.FileField(upload_to='media/upload/files')
+    description = models.CharField(max_length=200, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'File Gallery'
+        verbose_name_plural = 'File Gallery'
 
 
 class Province(models.Model):
@@ -79,10 +92,35 @@ class Product(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True)
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
-    is_active_comment = models.BooleanField
+    is_active_comment = models.BooleanField(default=False)
     status = models.CharField(
         max_length=50,
         choices=[(tag, tag.value) for tag in Order_state]
     )
-
-
+    price = models.DecimalField(max_digits=11, decimal_places=2, default=0)
+    has_discount = models.BooleanField(default=False)
+    super_price = models.DecimalField(max_digits=11, decimal_places=2, default=0, null=True, blank=True)
+    type_of_product = models.CharField(
+        max_length=50,
+        choices=[(tag, tag.value) for tag in Product_types]
+    )
+    transportation_class = models.CharField(
+        max_length=50,
+        choices=[(tag, tag.value) for tag in Product_transportation_class],
+        null=True,
+        blank=True
+    )
+    available_in_stock = models.CharField(
+        max_length=50,
+        choices=[(tag, tag.value) for tag in Product_In_Stock],
+        null=True,
+        blank=True
+    )
+    category = models.ManyToManyField(Category, blank=True)
+    pic = models.ImageField(upload_to='media/upload/product/images', default='media/upload/images/no-img.jpg')
+    summary = models.CharField(max_length=100, blank=True)
+    image_gallery = models.ManyToManyField(Image_gallery, blank=True)
+    files = models.ManyToManyField(File_gallery, blank=True)
+    count_of_download = models.IntegerField(null=True)
+    related_product = models.ManyToManyField('self', blank=True,
+                                             verbose_name="Related Product")
