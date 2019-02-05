@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cfe9f686-f1bf-4d49-a40f-35396387b5cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/Enums.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/Enums.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0002_category_description.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0003_auto_20190131_0646.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0004_auto_20190131_0655.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0005_auto_20190131_0659.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0006_auto_20190131_0710.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0007_image_gallery_tag.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0008_auto_20190131_0727.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0009_auto_20190131_0730.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0010_auto_20190201_2125.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0011_shop_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0012_auto_20190202_0631.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0013_auto_20190202_0634.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0014_auto_20190203_0655.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0015_auto_20190203_0656.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0016_auto_20190203_0659.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/0017_auto_20190203_0701.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/migrations/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,27 +18,28 @@
     <session id="1089688093">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.40" value="1" />
           <entry key="project.open.time.41" value="2" />
           <entry key="project.open.time.42" value="1" />
           <entry key="project.open.time.49" value="1" />
           <entry key="project.open.time.51" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="27" />
-          <entry key="py" value="2246" />
+          <entry key="py" value="2420" />
           <entry key="txt" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="32" />
-          <entry key="Python" value="2246" />
+          <entry key="Python" value="2420" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -75,29 +56,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shop/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="109" column="18" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
+            <state relative-caret-position="276">
+              <caret line="153" column="25" selection-start-line="153" selection-start-column="25" selection-end-line="153" selection-end-column="25" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1549253140826" expanded="true" signature="203:611" ph="..." />
-                <marker date="1549253140826" expanded="true" signature="911:916" ph="..." />
-                <marker date="1549253140826" expanded="true" signature="1279:1284" ph="..." />
-                <marker date="1549253140826" expanded="true" signature="2931:2932" ph="..." />
+                <marker date="1549337522035" expanded="true" signature="104:512" ph="..." />
+                <marker date="1549337522035" expanded="true" signature="812:817" ph="..." />
+                <marker date="1549337522035" expanded="true" signature="1180:1185" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shop/Enums.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+            <state relative-caret-position="208">
+              <caret line="21" column="26" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="26" />
               <folding>
-                <marker date="1549253140742" expanded="true" signature="356:361" ph="..." />
+                <marker date="1549335088194" expanded="true" signature="356:361" ph="..." />
               </folding>
             </state>
           </provider>
@@ -152,8 +132,8 @@
       <list>
         <option value="$PROJECT_DIR$/mysite/settings.py" />
         <option value="$PROJECT_DIR$/shop/admin.py" />
-        <option value="$PROJECT_DIR$/shop/models.py" />
         <option value="$PROJECT_DIR$/shop/Enums.py" />
+        <option value="$PROJECT_DIR$/shop/models.py" />
       </list>
     </option>
   </component>
@@ -183,11 +163,6 @@
           <expand>
             <path>
               <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mysite" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mysite" type="462c0819:PsiDirectoryNode" />
               <item name="mysite" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -261,9 +236,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27231467" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27609682" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -277,7 +251,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3295082" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.3295082" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3295082" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49924356" weight="0.3295082" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.3295082" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -320,20 +294,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/shop/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="109" column="18" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1549253140826" expanded="true" signature="203:611" ph="..." />
-            <marker date="1549253140826" expanded="true" signature="911:916" ph="..." />
-            <marker date="1549253140826" expanded="true" signature="1279:1284" ph="..." />
-            <marker date="1549253140826" expanded="true" signature="2931:2932" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mysite/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1717">
@@ -353,10 +313,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/shop/Enums.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+        <state relative-caret-position="208">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="26" />
           <folding>
-            <marker date="1549253140742" expanded="true" signature="356:361" ph="..." />
+            <marker date="1549335088194" expanded="true" signature="356:361" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="153" column="25" selection-start-line="153" selection-start-column="25" selection-end-line="153" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1549337522035" expanded="true" signature="104:512" ph="..." />
+            <marker date="1549337522035" expanded="true" signature="812:817" ph="..." />
+            <marker date="1549337522035" expanded="true" signature="1180:1185" ph="..." />
           </folding>
         </state>
       </provider>

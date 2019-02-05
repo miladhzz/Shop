@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from shop.Enums import Order_state, Product_transportation_class, Product_types, Product_In_Stock
-
 
 class Category(models.Model):
     title = models.CharField(max_length=100, unique=True)
@@ -93,28 +91,55 @@ class Product(models.Model):
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
     is_active_comment = models.BooleanField(default=False)
-    status = models.CharField(
-        max_length=50,
-        choices=[(tag, tag.value) for tag in Order_state]
+    DRAFT = 1
+    PUBLISHED = 2
+    REOPEN = 3
+    Order_state = (
+        (DRAFT, 'Draft'),
+        (PUBLISHED, 'Published'),
+        (REOPEN, 'Reopen'),
+    )
+    status = models.IntegerField(
+        choices=Order_state,
+        default=DRAFT,
     )
     price = models.DecimalField(max_digits=11, decimal_places=2, default=0)
     has_discount = models.BooleanField(default=False)
     super_price = models.DecimalField(max_digits=11, decimal_places=2, default=0, null=True, blank=True)
-    type_of_product = models.CharField(
-        max_length=50,
-        choices=[(tag, tag.value) for tag in Product_types]
+    DOWNLOAD = 1
+    POSTAL = 2
+    Product_types = (
+        (DOWNLOAD, 'Download'),
+        (POSTAL, 'Postal'),
     )
-    transportation_class = models.CharField(
-        max_length=50,
-        choices=[(tag, tag.value) for tag in Product_transportation_class],
+    type_of_product = models.IntegerField(
+        choices=Product_types,
+        default=DOWNLOAD
+    )
+    EXPRESS = 1
+    NORMAL = 2
+    TIEPAKS = 3
+    Product_transportation_class = (
+        (EXPRESS, 'Express Post'),
+        (NORMAL, 'Normal Post'),
+        (TIEPAKS, 'Tiepaks'),
+    )
+    transportation_class = models.IntegerField(
+        choices=Product_transportation_class,
         null=True,
         blank=True
     )
-    available_in_stock = models.CharField(
-        max_length=50,
-        choices=[(tag, tag.value) for tag in Product_In_Stock],
-        null=True,
-        blank=True
+    AVAILABLE = 1
+    UNAVAILABLE = 2
+    PREBUY = 3
+    Product_In_Stock = (
+        (AVAILABLE, 'Available'),
+        (UNAVAILABLE, 'Unavailable'),
+        (PREBUY, 'In Prebuy'),
+    )
+    available_in_stock = models.IntegerField(
+        choices=Product_In_Stock,
+        default=AVAILABLE
     )
     category = models.ManyToManyField(Category, blank=True)
     pic = models.ImageField(upload_to='media/upload/product/images', default='media/upload/images/no-img.jpg')
@@ -124,3 +149,6 @@ class Product(models.Model):
     count_of_download = models.IntegerField(null=True)
     related_product = models.ManyToManyField('self', blank=True,
                                              verbose_name="Related Product")
+
+    def __str__(self):
+        return self.title
