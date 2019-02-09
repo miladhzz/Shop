@@ -1,12 +1,16 @@
 from django.contrib import admin
-from shop.models import Category, Tag, Image_gallery, Shop_user, City, Province, Product, File_gallery
+from shop import models
 
 # Register your models here.
-admin.site.register(Category)
-admin.site.register(Tag)
-admin.site.register(Image_gallery)
-admin.site.register(Shop_user)
-admin.site.register(City)
-admin.site.register(Province)
-admin.site.register(Product)
-admin.site.register(File_gallery)
+admin.site.register(models.Category)
+admin.site.register(models.Tag)
+admin.site.register(models.Image_gallery)
+admin.site.register(models.Shop_user)
+admin.site.register(models.City)
+admin.site.register(models.Province)
+admin.site.register(models.Product)
+admin.site.register(models.File_gallery)
+admin.site.register(models.Cart)
+admin.site.register(models.Order)
+admin.site.register(models.Payment_log)
+admin.site.register(models.Product_selection)
