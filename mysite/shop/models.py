@@ -75,6 +75,8 @@ class Shop_user(models.Model):
     about = models.TextField(max_length=300, null=True, blank=True)
     postal_code = models.CharField(max_length=10, null=True, blank=True)
     city = models.OneToOneField(City, on_delete=models.SET_NULL, null=True)
+    company_name = models.CharField(max_length=200, blank=True)
+    address = models.TextField(max_length=300, blank=True)
 
     class Meta:
         verbose_name = 'Shop User'
@@ -175,9 +177,7 @@ class Product_selection(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
-    company_name = models.CharField(max_length=200, blank=True)
-    address = models.TextField(max_length=300, blank=True)
-    extra_description = models.CharField(max_length=200, blank=True)
+    order_note = models.CharField(max_length=200, blank=True)
     total_price = models.DecimalField(max_digits=11, decimal_places=2, default=0)
     ATPLACE = 1
     ONLINE = 2
