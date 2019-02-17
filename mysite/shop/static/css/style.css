@@ -423,6 +423,9 @@ a.cart{
   margin-right: 5px;
   text-decoration: none;
 }
+.product-carousel-title{
+    width: 100%;
+}
 .product-hover a i.fa {
     margin-right: 5px;
 }

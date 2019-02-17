@@ -8,8 +8,8 @@ from shop import models
 class Product(View):
 
     def get(self, request):
-        context = models.Product.objects.all()
-        return render(request, 'product.html', {'context': context})
+        products = models.Product.objects.all()
+        return render(request, 'product.html', {'products': products})
 
 
 class Home(View):

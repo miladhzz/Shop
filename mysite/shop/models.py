@@ -89,7 +89,7 @@ class Shop_user(models.Model):
 class Product(models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    content = models.TextField(max_length=1000)
+    content = models.TextField(max_length=2000)
     publish_date = models.DateTimeField(auto_now_add=True)
     writer = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
