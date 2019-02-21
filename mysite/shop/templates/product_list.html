@@ -20,14 +20,14 @@
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
-                {% for product in products %}
+                {% for product in product_list %}
                     <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
                         <div class="product-upper">
-                            <img src="../{{ product.pic }}" alt="">
+                            <img src="../{{ product.pic }}" alt="{{ product.alt }}" width="190">
                         </div>
                         <div class="product-carousel-title">
-                            <a href="">{% my_slice product.title %}</a>
+                            <a href="{{ product.slug }}"><h4>{% my_slice product.title %}</h4></a>
                         </div>
                         <div class="product-carousel-price">
                             <ins>$899.00</ins> <del>$999.00</del>

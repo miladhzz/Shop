@@ -1,15 +1,18 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import ListView, DeleteView
 from django.views import View
 from shop import models
 
 
 # Create your views here
-class Product(View):
+class Product_list(ListView):
+    model = models.Product
+    template_name = 'product_list.html'
 
-    def get(self, request):
-        products = models.Product.objects.all()
-        return render(request, 'product.html', {'products': products})
+
+class Product_detail(ListView):
+    model = models.Product
+    template_name = 'product_detail.html'
 
 
 class Home(View):

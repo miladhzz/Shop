@@ -1123,8 +1123,19 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     margin-top: 15px;
 }
 
-.single-shop-product {margin-bottom: 50px}
+.single-shop-product {
+    margin-bottom: 50px;
+    width: 220px;
+
+}
 
 .pagination > li > a, .pagination > li > span {
   color: #5a88ca;
+}
+
+div.product-upper{
+    text-align: center;
+    border: 1px solid #d4c7c7;
+    min-height: 250px;
+    margin-bottom: 10px;
 }
