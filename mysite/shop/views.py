@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.views import View
 from shop import models
 
@@ -10,7 +10,8 @@ class Product_list(ListView):
     template_name = 'product_list.html'
 
 
-class Product_detail(ListView):
+class Product_detail(DetailView):
+    print('Processing Product_detail')
     model = models.Product
     template_name = 'product_detail.html'
 

@@ -30,7 +30,7 @@
                             <a href="{{ product.slug }}"><h4>{% my_slice product.title %}</h4></a>
                         </div>
                         <div class="product-carousel-price">
-                            <ins>$899.00</ins> <del>$999.00</del>
+                            <ins>{{ product.price }}</ins> {% if product.has_discount %}<del>{{ product.super_price }}</del> {% endif %}
                         </div>
 
                         <div class="product-option-shop">
