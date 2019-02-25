@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from . import helper
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -25,7 +26,7 @@ class Tag(models.Model):
 
 class Image_gallery(models.Model):
     title = models.CharField(max_length=100, unique=True)
-    pic = models.ImageField(upload_to='media/upload/images', default='media/upload/images/no-img.jpg')
+    pic = models.ImageField(upload_to='upload/images', default='upload/images/no-img.jpg')
     alt = models.CharField(max_length=200, null=True, blank=True)
     description = models.CharField(max_length=200, null=True, blank=True)
 
@@ -71,7 +72,7 @@ class Shop_user(models.Model):
     website = models.CharField(max_length=100, null=True, blank=True)
     mobile = models.CharField(max_length=11)
     tel = models.CharField(max_length=11)
-    profile_pic = models.ImageField(upload_to='media/upload/profile/images', default='media/upload/images/no-img.jpg')
+    profile_pic = models.ImageField(upload_to='upload/profile/images', default='upload/images/no-img.jpg')
     about = models.TextField(max_length=300, null=True, blank=True)
     postal_code = models.CharField(max_length=10, null=True, blank=True)
     city = models.OneToOneField(City, on_delete=models.SET_NULL, null=True)
@@ -145,7 +146,7 @@ class Product(models.Model):
         default=AVAILABLE
     )
     category = models.ManyToManyField(Category, blank=True)
-    pic = models.ImageField(upload_to='media/upload/product/images', default='media/upload/images/no-img.jpg')
+    pic = models.ImageField(upload_to='upload/product/images', default='upload/images/no-img.jpg')
     summary = models.CharField(max_length=100, blank=True)
     image_gallery = models.ManyToManyField(Image_gallery, blank=True)
     files = models.ManyToManyField(File_gallery, blank=True)
@@ -155,6 +156,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('product-detail', args=[self.slug])
 
 
 class Cart(models.Model):

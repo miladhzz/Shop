@@ -85,12 +85,12 @@
                             <div class="col-sm-6">
                                 <div class="product-images">
                                     <div class="product-main-img">
-                                        <img src="../{{ product.pic }}" alt="{{ product.title }}">
+                                        <img src="{{ product.pic.url }}" alt="{{ product.title }}">
                                     </div>
                                     
                                     <div class="product-gallery">
                                         {% for  gallery in product.image_gallery.all%}
-                                        <img src="../{{ gallery.pic }}" alt="{{ gallery.alt }}">
+                                        <img src="{{ gallery.pic.url }}" alt="{{ gallery.alt }}">
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -162,10 +162,10 @@
                         <div class="related-products-wrapper">
                             <h2 class="related-products-title">Related Products</h2>
                             <div class="related-products-carousel">
-                                {% for related_item in product.related_product.all %}
+                                {% for related_item in product.related_product.all|slice:":3" %}
                                 <div class="single-product">
                                     <div class="product-f-image">
-                                        <img src="../{{ related_item.pic }}" alt="{{ related_item.title }}">
+                                        <img src="{{ related_item.pic.url }}" alt="{{ related_item.title }}">
 
                                         <div class="product-hover">
                                             <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>

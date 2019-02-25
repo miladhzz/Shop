@@ -24,10 +24,10 @@
                     <div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
                         <div class="product-upper">
-                            <img src="../{{ product.pic }}" alt="{{ product.alt }}" width="190">
+                            <img src="{{ product.pic.url }}" alt="{{ product.alt }}" width="190">
                         </div>
                         <div class="product-carousel-title">
-                            <a href="{{ product.slug }}"><h4>{% my_slice product.title %}</h4></a>
+                            <a href="{{ product.get_absolute_url }}"><h4>{% my_slice product.title %}</h4></a>
                         </div>
                         <div class="product-carousel-price">
                             <ins>{{ product.price }}</ins> {% if product.has_discount %}<del>{{ product.super_price }}</del> {% endif %}
