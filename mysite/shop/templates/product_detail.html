@@ -31,34 +31,15 @@
                     
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Products</h2>
+                        {% for product in product.new_product.all %}
                         <div class="thubmnail-recent">
-                            <img src="../{{ product.pic }}" class="recent-thumb" alt="">
-                            <h2><a href="">Sony Smart TV - 2015</a></h2>
+                            <img src="{{ product.pic.url }}" class="recent-thumb" alt="">
+                            <h2><a href="{{ product.get_absolute_url }}">{{ product.title|slice:"35" }}</a></h2>
                             <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>                             
+                               <ins>{{ product.price }}</ins> {% if product.has_discount %}<del>{{ product.super_price }}</del> {% endif %}
+                            </div>
                         </div>
-                        <div class="thubmnail-recent">
-                            <img src="../{{ product.pic }}" class="recent-thumb" alt="">
-                            <h2><a href="">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>                             
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="../{{ product.pic }}" class="recent-thumb" alt="">
-                            <h2><a href="">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>                             
-                        </div>
-                        <div class="thubmnail-recent">
-                            <img src="../{{ product.pic }}" class="recent-thumb" alt="">
-                            <h2><a href="">Sony Smart TV - 2015</a></h2>
-                            <div class="product-sidebar-price">
-                                <ins>$700.00</ins> <del>$100.00</del>
-                            </div>                             
-                        </div>
+                        {% endfor %}
                     </div>
                     
                     <div class="single-sidebar">

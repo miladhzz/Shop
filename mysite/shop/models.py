@@ -160,6 +160,9 @@ class Product(models.Model):
     def get_absolute_url(self):
         return reverse('product-detail', args=[self.slug])
 
+    def new_product(self):
+        return Product.objects.all()[:4]
+
 
 class Cart(models.Model):
     total_money = models.DecimalField(max_digits=11, decimal_places=2, default=0)

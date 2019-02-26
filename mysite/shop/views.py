@@ -1,18 +1,17 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views import View
-from shop import models
+from .models import Product
 
 
 # Create your views here
 class Product_list(ListView):
-    model = models.Product
+    model = Product
     template_name = 'product_list.html'
 
 
 class Product_detail(DetailView):
-    print('Processing Product_detail')
-    model = models.Product
+    model = Product
     template_name = 'product_detail.html'
 
 
