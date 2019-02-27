@@ -31,7 +31,7 @@
                     
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Products</h2>
-                        {% for product in product.new_product.all %}
+                        {% for product in latest_product %}
                         <div class="thubmnail-recent">
                             <img src="{{ product.pic.url }}" class="recent-thumb" alt="">
                             <h2><a href="{{ product.get_absolute_url }}">{{ product.title|slice:"35" }}</a></h2>
