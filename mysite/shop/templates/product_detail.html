@@ -31,7 +31,7 @@
                     
                     <div class="single-sidebar">
                         <h2 class="sidebar-title">Products</h2>
-                        {% for product in latest_product %}
+                        {% for product in latest_product|slice:"5" %}
                         <div class="thubmnail-recent">
                             <img src="{{ product.pic.url }}" class="recent-thumb" alt="">
                             <h2><a href="{{ product.get_absolute_url }}">{{ product.title|slice:"35" }}</a></h2>
@@ -71,7 +71,7 @@
                                     
                                     <div class="product-gallery">
                                         {% for  gallery in product.image_gallery.all%}
-                                        <img src="{{ gallery.pic.url }}" alt="{{ gallery.alt }}">
+                                        <img src="{{ gallery.pic.url }}" alt="{{ gallery.title }}">
                                         {% endfor %}
                                     </div>
                                 </div>
@@ -149,12 +149,12 @@
                                         <img src="{{ related_item.pic.url }}" alt="{{ related_item.title }}">
 
                                         <div class="product-hover">
-                                            <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <a href="{{ related_item.get_absolute_url }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
-                                    <h2><a href="">{{ related_item.title }}</a></h2>
+                                    <h2><a href="{{ related_item.get_absolute_url }}">{{ related_item.title }}</a></h2>
 
                                     <div class="product-carousel-price">
                                         <ins>{{ related_item.price }}</ins>
