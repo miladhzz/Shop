@@ -84,12 +84,12 @@
                                         <ins>{{ product.price }}</ins> {% if product.has_discount %}<del>{{ product.super_price }}</del> {% endif %}
                                     </div>    
                                     
-                                    <form action="" class="cart">
-                                        <div class="quantity">
-                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                                        </div>
-                                        <button class="add_to_cart_button" type="submit">Add to cart</button>
-                                    </form>   
+                                    <!--Add to cart-->
+                                    <form action="{% url 'cart_add' product.id %}" method="post">
+                                        {{ cart_product_from }}
+                                        {% csrf_token %}
+                                        <input type="submit" value="Add to cart"/>
+                                    </form>
                                     
                                     <div class="product-inner-category">
                                         <p>Category:
@@ -149,7 +149,12 @@
                                         <img src="{{ related_item.pic.url }}" alt="{{ related_item.title }}">
 
                                         <div class="product-hover">
-                                            <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>-->
+                                            <form action="{% url 'cart_add' product.id %}" method="post">
+                                                {{ cart_product_from_single }}
+                                                {% csrf_token %}
+                                                <input class="add-to-cart-link" type="submit" value="Add to cart"/>
+                                            </form>
                                             <a href="{{ related_item.get_absolute_url }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>

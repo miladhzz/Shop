@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Home {% endblock %}
+{% block title %} Cart {% endblock %}
 {% block content %}
     
     <div class="product-big-title-area">
@@ -21,7 +21,7 @@
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <form method="post" action="#">
+                            <!--<form>-->
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>
@@ -34,35 +34,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="cart_item">
+                                    {% for item in cart %}
+                                        {% with product=item.product %}
+                                             <tr class="cart_item">
                                             <td class="product-remove">
                                                 <a title="Remove this item" class="remove" href="#">×</a>
                                             </td>
 
                                             <td class="product-thumbnail">
-                                                <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="{% static "img/product-thumb-2.jpg"%} "></a>
+                                                <a href="{{ product.get_absolute_url }}"><img width="145" height="145" alt="{{ product.title }}" class="shop_thumbnail" src="{{ product.pic.url }} "></a>
                                             </td>
 
                                             <td class="product-name">
-                                                <a href="single-product.html">Ship Your Idea</a>
+                                                <a href="{{ product.get_absolute_url }}">{{ product.title|slice:":35"}}</a>
                                             </td>
 
                                             <td class="product-price">
-                                                <span class="amount">£15.00</span>
+                                                <span class="amount">{{ item.price }}</span>
                                             </td>
 
                                             <td class="product-quantity">
                                                 <div class="quantity buttons_added">
-                                                    <input type="button" class="minus" value="-">
-                                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="1" min="0" step="1">
-                                                    <input type="button" class="plus" value="+">
+                                                    <form action="{% url 'cart_add' product.id %}" method="post">
+                                                        {{ item.update_count_from.count }}
+                                                        {{ item.update_count_from.update }}
+                                                        {% csrf_token %}
+                                                        <input type="submit" value="update"/>
+                                                    </form>
                                                 </div>
                                             </td>
 
                                             <td class="product-subtotal">
-                                                <span class="amount">£15.00</span>
+                                                <span class="amount">{{ item.total_price }}</span>
                                             </td>
                                         </tr>
+                                        {% endwith %}
+
+                                    {% endfor %}
+
                                         <tr>
                                             <td class="actions" colspan="6">
                                                 <div class="coupon">
@@ -76,7 +85,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </form>
+                            <!--<form/>-->
                         </div>
                     </div>
                 </div>
