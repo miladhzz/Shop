@@ -150,7 +150,7 @@
 
                                         <div class="product-hover">
                                             <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>-->
-                                            <form action="{% url 'cart_add' product.id %}" method="post">
+                                            <form action="{% url 'cart_add' related_item.id %}" method="post">
                                                 {{ cart_product_from }}
                                                 {% csrf_token %}
                                                 <input class="add-to-cart-link" type="submit" value="Add to cart"/>

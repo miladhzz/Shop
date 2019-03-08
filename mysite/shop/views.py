@@ -4,7 +4,7 @@ from django.views import View
 from .models import Product
 from django.views.generic.base import ContextMixin
 from django.views.decorators.http import require_POST
-from .forms import CartAddProductForm
+from .forms import CartAddProductForm, CartUpdateProductForm
 from .cart import Cart
 
 
@@ -12,6 +12,7 @@ class Form_Mixin(ContextMixin):
     def get_context_data(self, *args, **kwargs):
         ctx = super(Form_Mixin, self).get_context_data(**kwargs)
         ctx['cart_product_from'] = CartAddProductForm()
+        ctx['cart'] = Cart(self.request)
         return ctx
 
 
@@ -46,7 +47,7 @@ class Product_detail(TopSel_Mixin, Latest_Mixin, Form_Mixin, DetailView):
     template_name = 'product_detail.html'
 
 
-class Home(TopSel_Mixin, Recently_Mixin, Latest_Mixin,Form_Mixin, ListView):
+class Home(TopSel_Mixin, Recently_Mixin, Latest_Mixin, Form_Mixin, ListView):
     model = Product
     template_name = "home.html"
 
@@ -69,19 +70,18 @@ def cart_add(request, product_id):
                  update_count=cd['update'])
     return redirect('cart_detail')
 
-'''
+
 @require_POST
-def cart_add_single(request, product_id):
+def cart_update(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
-    form = CartAddProductFormSingle(request.POST)
+    form = CartUpdateProductForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
         cart.add(product=product,
                  count=cd['count'],
                  update_count=cd['update'])
     return redirect('cart_detail')
-'''
 
 
 def cart_remove(request, product_id):
@@ -94,6 +94,6 @@ def cart_remove(request, product_id):
 def cart_detail(request):
     cart = Cart(request)
     for item in cart:
-        item['update_count_from'] = CartAddProductForm(initial={'count': item['count'],
-                                                                'update': True})
+        item['update_count_from'] = CartUpdateProductForm(initial={'count': item['count'],
+                                                                      'update': True})
     return render(request, 'cart.html', {'cart': cart})

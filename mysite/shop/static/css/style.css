@@ -104,9 +104,12 @@ z-index: 999;}
     color: #666;
 }
 .cart-amunt {
-    color: #5a88ca;
+    color: #FFFFFF;
     font-weight: 700;
+    background-color: #428bca;
+    padding: 5px;
 }
+
 .product-count {
     background: none repeat scroll 0 0 #5a88ca;
     border-radius: 50%;
@@ -513,7 +516,7 @@ a.cart{
     float: left;
     height: 90px;
     margin-right: 15px;
-    width: 100px;
+    width: 80px;
 }
 .single-wid-product h2 {
     font-size: 14px;
@@ -685,7 +688,7 @@ width: 10px;
   margin: 10px 0 0;
 }
 
-.product-big-title-area {background: url(img/crossword.png) repeat scroll 0 0 #5a88ca}
+.product-big-title-area {background: url(../img/crossword.png) repeat scroll 0 0 #5a88ca}
 
 .product-bit-title h2 {
   font-family: raleway;
@@ -724,6 +727,11 @@ input[type="submit"], button[type=submit] {
     color: #fff;
     padding: 11px 20px;
     text-transform: uppercase;
+
+}
+input[type="submit"].checkout-button, button[type=submit].checkout-button {
+    float: right;
+
 }
 input[type="submit"]:hover, button[type=submit]:hover {background-color: #222}
 .single-sidebar input[type="text"] {
