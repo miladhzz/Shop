@@ -17,7 +17,14 @@
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
-            <div class="row">
+            {% if cart|length == 0 %}
+                    <div>
+                        <h3>Cart is empty!</h3>
+                    <br />
+                    <a class="btn btn-primary" href="{% url 'product' %}">Return to Product List</a>
+                    </div>
+            {% else %}
+                    <div class="row">
                 <div class="col-md-8">
                     <div class="product-content-right">
                         <div class="woocommerce">
@@ -25,8 +32,8 @@
                                 <table cellspacing="0" class="shop_table cart">
                                     <thead>
                                         <tr>
-                                            <th class="product-remove">&nbsp;</th>
-                                            <th class="product-thumbnail">&nbsp;</th>
+                                            <th class="product-remove">Remove</th>
+                                            <th class="product-thumbnail">Image</th>
                                             <th class="product-name">Product</th>
                                             <th class="product-price">Price</th>
                                             <th class="product-quantity">Quantity</th>
@@ -38,7 +45,7 @@
                                         {% with product=item.product %}
                                              <tr class="cart_item">
                                             <td class="product-remove">
-                                                <a title="Remove this item" class="remove" href="#">×</a>
+                                                <a title="Remove this item" class="remove" href="{% url 'cart_remove' product.id %}">×</a>
                                             </td>
 
                                             <td class="product-thumbnail">
@@ -98,7 +105,7 @@
                                     <tbody>
                                         <tr class="cart-subtotal">
                                             <th>Cart Subtotal</th>
-                                            <td><span class="amount">£15.00</span></td>
+                                            <td><span class="amount">${{ cart.get_total_price }}</span></td>
                                         </tr>
 
                                         <tr class="shipping">
@@ -108,7 +115,7 @@
 
                                         <tr class="order-total">
                                             <th>Order Total</th>
-                                            <td><strong><span class="amount">£15.00</span></strong> </td>
+                                            <td><strong><span class="amount">${{ cart.get_total_price }}</span></strong> </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -116,6 +123,7 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

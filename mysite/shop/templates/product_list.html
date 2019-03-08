@@ -17,27 +17,33 @@
 
 
     <div class="single-product-area">
-        <div class="zigzag-bottom"></div>
+        <div class="zigzag-bottom">
+
+        </div>
         <div class="container">
             <div class="row">
                 {% for product in product_list %}
                     <div class="col-md-3 col-sm-6">
-                    <div class="single-shop-product">
-                        <div class="product-upper">
-                            <img src="{{ product.pic.url }}" alt="{{ product.alt }}" width="190">
-                        </div>
-                        <div class="product-carousel-title">
-                            <a href="{{ product.get_absolute_url }}"><h4>{% my_slice product.title %}</h4></a>
-                        </div>
-                        <div class="product-carousel-price">
-                            <ins>{{ product.price }}</ins> {% if product.has_discount %}<del>{{ product.super_price }}</del> {% endif %}
-                        </div>
+                        <div class="single-shop-product">
+                            <div class="product-upper">
+                                <img src="{{ product.pic.url }}" alt="{{ product.alt }}" width="190">
+                            </div>
+                            <div class="product-carousel-title">
+                                <a href="{{ product.get_absolute_url }}"><h4>{% my_slice product.title %}</h4></a>
+                            </div>
+                            <div class="product-carousel-price">
+                                <ins>{{ product.price }}</ins> {% if product.has_discount %}<del>{{ product.super_price }}</del> {% endif %}
+                            </div>
 
-                        <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+                            <div class="product-option-shop">
+                                 <form action="{% url 'cart_add' product.id %}" method="post">
+                                        {{ cart_product_from }}
+                                        {% csrf_token %}
+                                        <input type="submit" value="Add to cart"/>
+                                    </form>
+                            </div>
                         </div>
                     </div>
-                </div>
                 {% endfor %}
             </div>
             

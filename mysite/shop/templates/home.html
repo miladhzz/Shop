@@ -94,7 +94,11 @@
                                 <div class="product-f-image">
                                     <img src="{{ product.pic.url }}" alt="{{ product.alt }}">
                                     <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <form action="{% url 'cart_add' product.id %}" method="post">
+                                                {{ cart_product_from }}
+                                                {% csrf_token %}
+                                                <input class="add-to-cart-link" type="submit" value="Add to cart"/>
+                                            </form>
                                         <a href="{{ product.get_absolute_url }}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>

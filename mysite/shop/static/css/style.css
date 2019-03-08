@@ -398,7 +398,7 @@ a.cart{
   top: 0;
   width: 100%;transition: .4s;
 }
-.product-hover a {
+.product-hover a, .product-hover input {
     background: none repeat scroll 0 0 #5a88ca;
     border-radius: 5px;
     color: #fff;
