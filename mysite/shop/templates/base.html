@@ -54,10 +54,12 @@
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
                         <li>
-                            <!--<div class="shopping-item">-->
+                            {%if cart|length > 0%}
                                 <a class="cart" href="{% url 'cart_detail' %}">Cart - <span class="cart-amunt">${{ cart.get_total_price }}</span> <i class="fa fa-shopping-cart"></i>
                                 <span class="product-count">{{ cart|length }}</span></a>
-                            <!--</div>-->
+                            {% else %}
+                                <a class="cart" href="#">Cart is empty!</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>

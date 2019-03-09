@@ -12,7 +12,6 @@ class Form_Mixin(ContextMixin):
     def get_context_data(self, *args, **kwargs):
         ctx = super(Form_Mixin, self).get_context_data(**kwargs)
         ctx['cart_product_from'] = CartAddProductForm()
-        ctx['cart'] = Cart(self.request)
         return ctx
 
 
