@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.views import View
-from .models import Product
+from .models import Product, OrderItem
 from django.views.generic.base import ContextMixin
 from django.views.decorators.http import require_POST
-from .forms import CartAddProductForm, CartUpdateProductForm
+from .forms import CartAddProductForm, CartUpdateProductForm, OrderCheckoutForm
 from .cart import Cart
 
 
@@ -51,10 +51,29 @@ class Home(TopSel_Mixin, Recently_Mixin, Latest_Mixin, Form_Mixin, ListView):
     template_name = "home.html"
 
 
-class Checkout(View):
+def checkout(request):
+    cart = Cart(request)
+    if request.method == 'POST':
+        form = OrderCheckoutForm(request.POST)
+        if form.is_valid():
+            order = form.save()
+            for item in cart:
+                OrderItem.objects.create(order=order,
+                                         product=item['product'],
+                                         price=item['price'],
+                                         count=item['count'])
+            # Clear the cart
+            cart.clear()
+            return redirect('to_bank', order_id=order.random_order_id)
 
-    def get(self, request):
-        return render(request, 'checkout.html')
+    else:
+        form = OrderCheckoutForm()
+    return render(request, 'checkout.html', {'cart': cart,
+                                             'form': form})
+
+
+def to_bank(request, order_id):
+    return render(request, 'bank.html', {'order_id': order_id})
 
 
 @require_POST

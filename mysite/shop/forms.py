@@ -1,4 +1,5 @@
 from django import forms
+from .models import Order, Product
 
 PRODUCT_COUNT_CHOICES = [(i, str(i)) for i in range(1, 21)]
 
@@ -22,3 +23,10 @@ class CartUpdateProductForm(forms.Form):
     update = forms.BooleanField(required=False,
                                 initial=False,
                                 widget=forms.HiddenInput)
+
+
+class OrderCheckoutForm(forms.ModelForm):
+
+    class Meta:
+        model = Order
+        fields = ('name', 'family', 'email', 'mobile', 'is_accept_agreement')

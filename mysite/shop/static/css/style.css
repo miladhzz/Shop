@@ -721,12 +721,24 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
     border: 1px solid #ddd;
     padding: 10px;
 }
-input[type="submit"], button[type=submit] {
+input[type="submit"], button[type=submit] , a.checkout-button{
     background: none repeat scroll 0 0 #5a88ca;
     border: medium none;
     color: #fff;
     padding: 11px 20px;
     text-transform: uppercase;
+
+}
+a.checkout-button{
+    background: none repeat scroll 0 0 #5a88ca;
+    border: medium none;
+    color: #fff;
+    padding: 11px 20px;
+    text-transform: uppercase;
+    height: 42px;
+    display: block;
+    width: 132px;
+    float: right;
 
 }
 input[type="submit"].checkout-button, button[type=submit].checkout-button {

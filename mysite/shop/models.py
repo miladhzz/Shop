@@ -66,27 +66,6 @@ class City(models.Model):
         return self.title
 
 
-class Shop_user(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    nik_name = models.CharField(max_length=100, null=True, blank=True)
-    website = models.CharField(max_length=100, null=True, blank=True)
-    mobile = models.CharField(max_length=11)
-    tel = models.CharField(max_length=11)
-    profile_pic = models.ImageField(upload_to='upload/profile/images', default='upload/images/no-img.jpg')
-    about = models.TextField(max_length=300, null=True, blank=True)
-    postal_code = models.CharField(max_length=10, null=True, blank=True)
-    city = models.OneToOneField(City, on_delete=models.SET_NULL, null=True)
-    company_name = models.CharField(max_length=200, blank=True)
-    address = models.TextField(max_length=300, blank=True)
-
-    class Meta:
-        verbose_name = 'Shop User'
-        verbose_name_plural = 'Shop User'
-
-    def __str__(self):
-        return self.user.username
-
-
 class Product(models.Model):
     title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
@@ -161,28 +140,13 @@ class Product(models.Model):
         return reverse('product-detail', args=[self.slug])
 
 
-class Cart(models.Model):
-    total_money = models.DecimalField(max_digits=11, decimal_places=2, default=0)
-
-    def __str__(self):
-        return str(self.id)
-
-
-class Product_selection(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    count = models.IntegerField()
-    price = models.DecimalField(max_digits=11, decimal_places=2, default=0)
-
-    def __str__(self):
-        return 'Cart id:%s Product:%s' % (self.cart, self.product)
-
-
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    cart = models.OneToOneField(Cart, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    family = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    mobile = models.CharField(max_length=11)
+    address = models.TextField(max_length=500, blank=True)
     order_note = models.CharField(max_length=200, blank=True)
-    total_price = models.DecimalField(max_digits=11, decimal_places=2, default=0)
     ATPLACE = 1
     ONLINE = 2
     Payment_types = (
@@ -191,7 +155,8 @@ class Order(models.Model):
     )
     payment_type = models.IntegerField(
         choices=Payment_types,
-        default=ONLINE
+        default=ONLINE,
+
     )
     is_accept_agreement = models.BooleanField()
     COMPLETED = 1
@@ -209,16 +174,32 @@ class Order(models.Model):
     order_status = models.IntegerField(
         choices=Order_statuses,
         default=CHECKING,
-        blank=True
     )
-    payment_tool = models.CharField(max_length=100, blank=True)
+    payment_tool = models.CharField(max_length=100)
     order_date = models.DateTimeField(auto_now_add=True)
-    count_of_allow_download = models.IntegerField()
-    date_of_expire_download = models.DateField()
+    order_update_date = models.DateTimeField(blank=True, null=True)
+    count_of_allow_download = models.IntegerField(default=10)
+    date_of_expire_download = models.DateTimeField(blank=True, null=True)
     random_order_id = models.IntegerField(default=helper.random_int, unique=True)
 
     def __str__(self):
         return str(self.random_order_id)
+
+    def get_total_cost(self):
+        return sum(item.get_cost for item in self.items.all)
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    count = models.IntegerField()
+    price = models.DecimalField(max_digits=11, decimal_places=2, default=0)
+
+    def __str__(self):
+        return 'Order id:%s Product:%s' % (self.order, self.product)
+
+    def get_cost(self):
+        return self.price * self.count
 
 
 class Payment_log(models.Model):
